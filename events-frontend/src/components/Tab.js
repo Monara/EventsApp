@@ -1,5 +1,4 @@
 import React from 'react';
-import './Tab.css';
 import Place from './Place';
 import Events from './Events';
 

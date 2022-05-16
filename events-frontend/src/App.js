@@ -1,10 +1,9 @@
-import './App.css';
 import Tab from './components/Tab';
 
 const App = () => {
 
   return (
-    <div className="App">
+    <div>
       <Tab />
     </div>
   );
