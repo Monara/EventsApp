@@ -4,7 +4,7 @@ import Header from './components/Header';
 const App = () => {
 
   return (
-    <div className='bg-blue-50'>
+    <div className='bg-indigo-50'>
       <Header />
       <div className='px-80'>
         <Tab />
