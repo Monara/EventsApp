@@ -15,7 +15,7 @@ const Events = ({eventType, coord}) => {
 
 
   return (
-    <div>
+    <div className='flex flex-row flex-wrap'>
         {eventData.length > 0 ? 
         eventData.map((item, i) => <EventItem data={item} key={i}/>) : <p>No upcoming events</p>}
     </div>
