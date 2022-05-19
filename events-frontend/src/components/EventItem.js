@@ -7,7 +7,7 @@ const EventItemEmpty = () => {
 
   return (
 
-  <div className='w-1/4 h-80 bg-white shadow hover:shadow-md m-5 flex flex-column' style={{backgroundImage: `url(${closed})`, backgroundPosition: 'center',  backgroundSize: 'cover'}}>
+  <div className='w-1/4 h-80 bg-white shadow hover:shadow-md my-5 mx-6 flex flex-column' style={{backgroundImage: `url(${closed})`, backgroundPosition: 'center',  backgroundSize: 'cover'}}>
     <div className='w-full space-y-1 px-5 py-5 bg-white opacity-90 place-self-end max-h-80 overflow-y-auto cursor-pointer'>
       <p className='text-base font-sans font-semibold text-slate-900'>No upcoming events</p>
     </div>
