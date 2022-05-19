@@ -6,7 +6,7 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 const Caret = ({icon, callback, hide}) => {
   return ( //invisible placeholder so that the carousel doesn't shift when visible. 2xl === mx-6 === 1.5rem on empty event
-    hide ? <FontAwesomeIcon className='text-2xl invisible' icon={icon} /> : <FontAwesomeIcon onClick={callback} className='text-2xl text-indigo-200 cursor-pointer' icon={icon} />
+    hide ? <FontAwesomeIcon className='text-2xl invisible' icon={icon} /> : <FontAwesomeIcon onClick={callback} className='text-2xl text-indigo-300 cursor-pointer hover:text-indigo-400 hover:scale-150' icon={icon} />
   )
 }
 

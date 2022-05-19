@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import parse from 'html-react-parser';
 import closed from './closed.jpg'; //https://unsplash.com/photos/E1SID6pKht8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLeftLong, faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import {motion} from 'framer-motion';
   
 
 const EventItemEmpty = () => {
@@ -8,7 +11,7 @@ const EventItemEmpty = () => {
   return (
 
   <div className='w-1/4 h-80 bg-white shadow hover:shadow-md my-5 mx-6 flex flex-column' style={{backgroundImage: `url(${closed})`, backgroundPosition: 'center',  backgroundSize: 'cover'}}>
-    <div className='w-full space-y-1 px-5 py-5 bg-white opacity-90 place-self-end max-h-80 overflow-y-auto cursor-pointer'>
+    <div className='w-full space-y-1 px-5 py-5 bg-white opacity-90 place-self-end max-h-80 overflow-y-auto'>
       <p className='text-base font-sans font-semibold text-slate-900'>No upcoming events</p>
     </div>
   </div>
@@ -50,23 +53,36 @@ const EventItem = ({data}) => {
   const dates = formatDate(data.event_dates.starting_day, data.event_dates.ending_day);
   const [showDesc, setShowDesc] = useState(false);
 
+  const leftToRight = {
+    initial: {
+      x: '-100vw',
+    },
+    animate: {
+      x: '0',
+      transition: { duration: 0.25 },
+    },
+  }
+
   return (
 
     <div className='w-1/4 h-80 bg-white shadow hover:shadow-md m-5 flex flex-column' style={{backgroundImage: `url(${img})`, backgroundPosition: 'center',  backgroundSize: 'cover'}}>
-        <div onClick={()=> setShowDesc(!showDesc)} className='w-full space-y-1 px-5 py-5 bg-white opacity-90 place-self-end max-h-80 overflow-y-auto cursor-pointer'>
+      <div className='w-full space-y-1 px-5 pt-5 bg-white opacity-90 place-self-end max-h-80 overflow-y-auto overflow-x-clip'>
         {showDesc ?
-          <>
+          <motion.div variants={leftToRight} initial='initial' animate='animate'>
             <div className='text-sm text-slate-900'>{parse(data.description.body)}</div>
-            {data.info_url && <div className='text-sm'>Event link: <a className='text-indigo-900 underline' href={data.info_url} target='_blank' rel='noreferrer'>{data.info_url}</a></div>}
-          </> 
+            <div className='sticky bottom-0 pb-5 pt-2 bg-white'>
+              <button onClick={()=> setShowDesc(false)} className='bg-indigo-300 hover:bg-indigo-400 text-white text-sm font-bold py-2 px-3 rounded mr-2'><FontAwesomeIcon icon={faLeftLong} /></button>
+              {data.info_url && <a href={data.info_url} target='_blank' rel='noreferrer'><button className='bg-indigo-300 hover:bg-indigo-400 text-white text-sm font-bold py-2 px-2 rounded'>Website <FontAwesomeIcon icon={faUpRightFromSquare} /></button></a>}
+            </div>
+          </motion.div>
          :
-          <>
+          <div onClick={()=> setShowDesc(true)} className='cursor-pointer pb-5'>
             <p className='text-base font-sans font-semibold text-slate-900'>{data.name.en}</p>
             <p className='text-sm font-sans text-slate-600'>{dates[0]}-{dates[1]}</p>
-          </>
+          </div>
         }
-        </div>
-    </div>
+      </div>
+    </div> 
   )
 }
 
