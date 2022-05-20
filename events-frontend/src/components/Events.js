@@ -5,7 +5,7 @@ import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 const Caret = ({icon, callback, hide}) => {
-  return ( //invisible placeholder so that the carousel doesn't shift when visible. 2xl === mx-6 === 1.5rem on empty event
+  return ( //invisible placeholder so that the carousel doesn't shift when visible
     hide ? <FontAwesomeIcon className='text-2xl invisible' icon={icon} /> : <FontAwesomeIcon onClick={callback} className='text-2xl text-indigo-300 cursor-pointer hover:text-indigo-400 hover:scale-150' icon={icon} />
   )
 }
@@ -55,11 +55,11 @@ const Carousel = ({data, row}) => {
   }
 
   return (
-    <>
-    <Caret icon={faCaretLeft} callback={prev} hide={hideArrows.left}/>
-    {eventI.map((item) => <EventItem data={data[item]} key={item} />)}
-    <Caret icon={faCaretRight} callback={next} hide={hideArrows.right}/>
-    </>
+    <div className='flex flex-row items-center justify-center gap-10'>
+      <Caret icon={faCaretLeft} callback={prev} hide={hideArrows.left} />
+      {eventI.map((item) => <EventItem data={data[item]} key={item} width={100/row}/>)}
+      <Caret icon={faCaretRight} callback={next} hide={hideArrows.right} />
+    </div>
   )
 }
 
@@ -67,6 +67,12 @@ const Events = ({eventType, coord}) => { /**gets event data and makes a carousel
 
     const [eventData, setEventData] = useState('');
     const url = `http://localhost:3001/api/${eventType}/${coord.lat}/${coord.lon}/${coord.range}`;
+    const row = 3;
+    /*how rows should be implemented:
+      if (width >= 1280) count = 3;
+      if (width >= 768) count = 2;
+      else count = 1; 
+    }*/
 
     useEffect(() => {
         fetch(url)
@@ -76,14 +82,13 @@ const Events = ({eventType, coord}) => { /**gets event data and makes a carousel
     }, [url]); 
 
   return (
-    <div className=''>
-      <div className='flex flex-row flex-nowrap items-center'>
-          {eventData.length > 0 ? 
-          <Carousel data={eventData} row={3} />
-           : 
-          <EventItemEmpty />}
-      </div>
-    </div>
+    <>
+      {eventData.length > 0 ? 
+        <Carousel data={eventData} row={row} />
+        : 
+        <EventItemEmpty width={100/row} /> //TODO fix the empty event layout later
+      }
+    </>
   )
 }
 
