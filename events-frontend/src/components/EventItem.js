@@ -1,20 +1,21 @@
 import React, {useState} from 'react';
 import parse from 'html-react-parser';
-import closed from './closed.jpg'; //https://unsplash.com/photos/E1SID6pKht8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
+//import closed from './closed.jpg'; //https://unsplash.com/photos/E1SID6pKht8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeftLong, faUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import {motion} from 'framer-motion';
   
 
-const EventItemEmpty = ({width}) => {
+const EventItemEmpty = () => {
 
   return (
-
-  <div className='h-80 bg-white shadow hover:shadow-md my-5 mx-12 flex flex-column' style={{backgroundImage: `url(${closed})`, backgroundPosition: 'center',  backgroundSize: 'cover', width: `${width}%`}}>
-    <div className='w-full space-y-1 px-5 py-5 bg-white opacity-90 place-self-end max-h-80 overflow-y-auto'>
-      <p className='text-base font-sans font-semibold text-slate-900'>No upcoming events</p>
-    </div>
-  </div>
+    <>
+  {/*<div className='h-80 bg-white shadow hover:shadow-md my-5 ml-16 flex flex-column' style={{backgroundImage: `url(${closed})`, backgroundPosition: 'center',  backgroundSize: 'cover', width: `20%`}}>
+    <div className='w-full space-y-1 px-5 py-5 bg-white opacity-90 place-self-end max-h-80 overflow-y-auto'> */}
+      <p className='text-base font-sans font-semibold text-slate-900 ml-12'>No upcoming events</p>
+    {/*</div>
+  </div>*/}
+  </>
   )
 }
 
@@ -64,9 +65,10 @@ const EventItem = ({data, width}) => {
   }
 
   return (
-
-    <div className='h-80 bg-white shadow hover:shadow-md my-5 flex flex-column' style={{backgroundImage: `url(${img})`, backgroundPosition: 'center',  backgroundSize: 'cover', width: `${width}%`}}>
-      <div className='w-full space-y-1 px-5 pt-5 bg-white opacity-90 place-self-end max-h-80 overflow-y-auto overflow-x-clip'>
+ 
+  <div className='h-80 flex flex-row' style={{ width: `${width}%`}}>
+    <div className='flex w-full m-[5%] shadow hover:shadow-md' style={{backgroundImage: `url(${img})`, backgroundPosition: 'center',  backgroundSize: 'cover'}}>
+      <div className='w-full space-y-1 px-5 pt-5 bg-white opacity-90 max-h-80 overflow-y-auto overflow-x-clip place-self-end'>
         {showDesc ?
           <motion.div variants={leftToRight} initial='initial' animate='animate'>
             <div className='text-sm text-slate-900'>{parse(data.description.body)}</div>
@@ -82,7 +84,8 @@ const EventItem = ({data, width}) => {
           </div>
         }
       </div>
-    </div> 
+    </div>
+  </div> 
   )
 }
 

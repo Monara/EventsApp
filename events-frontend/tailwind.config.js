@@ -4,7 +4,10 @@ module.exports = {
     extend: {
       padding: {
         '5%': '5%',
-      }
+      },
+      margin: {
+        '5%': '5%',
+      },
     },
   },
   plugins: [],
