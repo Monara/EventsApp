@@ -4,7 +4,7 @@ const Header = ({tab}) => {
   const [tab1, setTab1] = tab;
   return (
     <div className='bg-gradient-to-r from-indigo-400 via-red-300 to-indigo-300 p-3 flex flex-row gap-5 justify-between'>
-      <h1 className='text-white ml-5 p-1'>HELSINKI.<span className='font-semibold'>EVENTS</span></h1>
+      <h1 className='text-white ml-5'>HELSINKI<span className='font-semibold'>EVENTS</span></h1>
       <ul className='text-white font-semibold uppercase flex flex-row gap-5 mr-5'>
         {tab1 ?
         <>

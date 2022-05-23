@@ -94,7 +94,7 @@ const Carousel = ({data}) => {
     }
   
     return ( 
-      <div className='flex flex-row items-center'>
+      <div className='flex flex-row items-center mx-2'>
         <Caret icon={faCaretLeft} callback={prev} hide={hideArrows.left} />
         {eventI.map((item) => <EventItem data={data[item]} key={item} width={100/row}/>)}
         <Caret icon={faCaretRight} callback={next} hide={hideArrows.right} />

@@ -21,7 +21,7 @@ const Place = ({name, address, hours, prices}) => {
 
   return (
     <div className='p-[5%] py-10 text-indigo-900'>
-      <div onClick={() => setShowAbout(!showAbout)} className='hover:text-indigo-700'>
+      <div onClick={() => setShowAbout(!showAbout)} className='hover:opacity-100 opacity-80'>
         <h1 className='text-2xl font-bold cursor-pointer'>{name} &nbsp;
         {showAbout ?
           <FontAwesomeIcon className='text-sm hover:scale-150' icon={faCaretUp} /> 

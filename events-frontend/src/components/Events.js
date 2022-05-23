@@ -6,14 +6,15 @@ import Carousel from './Carousel';
 const Events = ({eventType, coord}) => { /**gets event data and makes a carousel gallery or empty event card */
 
     const [eventData, setEventData] = useState('');
-    const url = `http://localhost:3001/api/${eventType}/${coord.lat}/${coord.lon}/${coord.range}`;
+    const url = `http://localhost:3001/api/${eventType}/${coord.lat}/${coord.lon}/${coord.range}`; 
 
     useEffect(() => {
         fetch(url)
         .then((res) => res.json())
         .then((data) => setEventData(data))
         .catch((error) => console.log(error))
-    }, [url]); 
+        console.log('fetching')
+    }, []); 
 
   return (
     <>
