@@ -10,7 +10,7 @@ Below, each place has a carousel gallery that responds to window resizing and is
 
 The information for the event cards is fetched through the backend of the app from MyHelsinki Open API (https://open-api.myhelsinki.fi/) using v1events calls, currently based on event place coordinates. The styling of the app was done with Tailwind CSS.
 
-<img src="/EventsApp/events-frontend/public/screenshot.png" alt="Project screenshot">
+![Project screenshot](events-frontend/public/screenshot.png)
 
 https://helsinki-events.herokuapp.com/
 
