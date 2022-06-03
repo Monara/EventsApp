@@ -67,7 +67,7 @@ const EventItem = ({data, width}) => {
   return (
  
   <div className='h-80 flex flex-row' style={{ width: `${width}%`}}>
-    <div className='flex w-full m-[5%] shadow hover:shadow-md' style={{backgroundImage: `url(${img})`, backgroundPosition: 'center',  backgroundSize: 'cover'}}>
+    <div className='flex w-full mx-[5%] shadow hover:shadow-md' style={{backgroundImage: `url(${img})`, backgroundPosition: 'center',  backgroundSize: 'cover'}}>
       <div className='w-full space-y-1 px-5 pt-5 bg-white opacity-90 max-h-80 overflow-y-auto overflow-x-clip place-self-end'>
         {showDesc ?
           <motion.div variants={leftToRight} initial='initial' animate='animate'>
